@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 from django.utils.log import DEFAULT_LOGGING
 from dotenv import load_dotenv, find_dotenv
+import django_heroku
+# import dj_database_url
 
 # Load environment definition file
 ENV_FILE = find_dotenv()
@@ -150,6 +152,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -172,3 +175,5 @@ CSRF_COOKIE_SECURE = True
 
 # CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
 # LOGIN_REDIRECT_URL = ''
+
+django_heroku.settings(locals())
